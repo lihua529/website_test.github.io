@@ -29,6 +29,15 @@
             padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            text-align: center; /* Center the image within this section */
+        }
+        .org-info img { /* Styling for the new image */
+            max-width: 100%; /* Ensure image is responsive */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+            margin: 20px auto; /* Center the image and add vertical spacing */
+            border-radius: 8px; /* Slightly rounded corners for aesthetics */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
         }
         .register-btn {
             display: inline-block;
@@ -47,13 +56,23 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0,0,0,0.5);
+            z-index: 1000; /* Ensure modal is on top */
         }
         .modal-content {
             background-color: white;
             margin: 15% auto;
             padding: 20px;
             width: 50%;
+            max-width: 600px; /* Limit modal width on larger screens */
             border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%; /* Make modal wider on smaller screens */
+                margin: 5% auto; /* Adjust margin for smaller screens */
+            }
         }
         .form-group {
             margin-bottom: 15px;
@@ -62,65 +81,106 @@
             display: block;
             margin-bottom: 5px;
         }
-        .form-group input {
+        .form-group input,
+        .form-group select { /* Apply similar styling to select tag */
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+        .form-group button { /* Styling for form buttons */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        .form-group button[type="submit"] {
+            background-color: #28a745; /* Green submit button */
+            color: white;
+        }
+        .form-group button[type="button"] {
+            background-color: #dc3545; /* Red cancel button */
+            color: white;
+        }
         .calendar {
             margin: 20px 0;
             position: relative;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .calendar-header {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between; /* Distribute items evenly */
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            background-color: #e9ecef; /* Light gray background for header */
+            padding: 10px;
+            border-radius: 5px;
         }
         .calendar-header button {
             background: #007bff;
             color: #fff;
             border: none;
-            border-radius: 3px;
-            padding: 5px 10px;
-            margin: 0 2px;
+            border-radius: 5px; /* Slightly more rounded buttons */
+            padding: 8px 12px;
+            margin: 0 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+        }
+        .calendar-header button:hover {
+            background-color: #0056b3;
         }
         .calendar-header span {
-            margin: 0 10px;
+            margin: 0 15px; /* Increased margin for text */
             font-weight: bold;
+            font-size: 1.1em;
+            color: #333;
         }
         .calendar td.selected {
             background-color: #007bff !important;
-            color: black !important;
+            color: white !important; /* Text color for selected date */
         }
         .calendar td.today {
-            color: #00ff00 !important;
+            color: #28a745 !important; /* Green for today's date text */
+            font-weight: bold;
         }
         .calendar td.selected.today {
-            color: #00ff00 !important;
+            background-color: #007bff !important;
+            color: white !important; /* Selected today should still be white text on blue background */
         }
         .calendar table {
             width: 100%;
             border-collapse: collapse;
         }
-        .calendar td {
-            padding: 10px;
-            border: 1px solid #ddd;
+        .calendar th, .calendar td {
+            padding: 12px; /* Increased padding for cells */
+            border: 1px solid #e0e0e0; /* Lighter border color */
             text-align: center;
             cursor: pointer;
+            transition: background-color 0.2s ease; /* Smooth hover effect */
+        }
+        .calendar th {
+            background-color: #f0f0f0; /* Light background for headers */
+            color: #555;
+            font-weight: normal;
         }
         .calendar td:hover {
-            background-color: #f0f0f0;
+            background-color: #e9ecef; /* Lighter hover effect */
         }
         .event-tooltip {
             display: none;
             position: absolute;
             background-color: #333;
             color: white;
-            padding: 5px;
-            border-radius: 3px;
+            padding: 8px 12px; /* More padding */
+            border-radius: 5px;
+            font-size: 0.9em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 999; /* Ensure tooltip is on top of other elements */
         }
     </style>
 </head>
@@ -135,6 +195,8 @@
             <p>Address: XXX Street, Chaoyang District, Beijing, China</p>
             <p>Contact: Phone: xxx-xxxx-xxxx</p>
             <p>Email: xxx@example.com</p>
+            <!-- Image added here -->
+            <img src="https://raw.githubusercontent.com/bigtitlicker/1/main/c151f7ded83d22b9a750371fac9a226.jpg" alt="Group photo of people with a 'The Cherokee Nation' banner in the background" onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';">
         </div>
 
         <a href="#" class="register-btn" onclick="openModal()">Registration Entry</a>
